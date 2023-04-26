@@ -1,11 +1,8 @@
-import supertest from "supertest";
-
 describe('Beach forecast functional tests', () => {
-  it('should return a forecast with just a few times', async() => {
-    const app = null
-    const { body, status } = await supertest(app).get('/forecast');
+  it('should return a forecast with just a few times', async () => {
+    const { body, status } = await global.testRequest.get('/forecast');
     expect(status).toBe(200);
-    expect(body).toBe([{
+    expect(body).toEqual([{
       "time": "2020-04-26T00:00:00+00:00",
       "forecast": [{
         "lat": -33.792726,
@@ -36,7 +33,8 @@ describe('Beach forecast functional tests', () => {
         "waveDirection": 232.12,
         "waveHeight": 0.46,
         "windDirection": 310.48
-      }] }
+      }]
+    }
     ]);
   });
 });
